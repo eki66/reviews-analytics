@@ -6,6 +6,10 @@ with open ('reviews.txt', 'r') as f:
 		count += 1
 		if count % 10000 == 0:
 			print(len(data))
+print('檔案讀取完了, 總共有', len(data), '筆資料')
 
 
-print(data[0])
+sun_len = 0
+for d in data:
+	sun_len = sun_len + len(d)
+print('留言平均長度是', sun_len/len(data))
