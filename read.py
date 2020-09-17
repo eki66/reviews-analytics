@@ -8,7 +8,6 @@ with open ('reviews.txt', 'r') as f:  # 讀取名為reviews.txt的留言文字�
 			print(len(data)) # 印出data清單的長度(即總留言筆數)
 print('檔案讀取完了, 總共有', len(data), '筆資料')
 
-
 sum_len = 0 # 建立一個初始為0, 名為sum_len 加總所有留言的(幾個字母)長度的變數
 for d in data: # 將data清單中的每一筆資料命名為d 的 for 迴圈 (for loop的意思就是把清單中的東西一個一個拿出來)
 	sum_len = sum_len + len(d) # 每一筆留言的長度len(d), 快寫為 sum_len += len(d), 累加所有留言的長度
@@ -28,3 +27,33 @@ for d in data:
 		good.append(d)
 print('一共有', len(good), '筆留言提到good')
 print(good[0])
+
+# 文字計數
+wc = {} # word_count字典
+for d in data:
+	words = d.split(' ')
+	for word in words:
+		if word in wc:
+			wc[word] += 1
+		else:
+			wc[word] = 1 #新增新的key進wc字典, wc[word] 右邊跟著 = 和 數字
+
+for word in wc:
+	if wc[word] > 1000000:
+		print(word, wc[word])
+
+print(len(wc))
+
+while True:
+	word = input('請問你想查甚麼字: ')
+	if word == 'q':
+		break
+	if word in wc:
+		print(word, '出現過的次數為', wc[word])
+	else:
+		print('字典裡沒有出現過喔!')
+	
+print('謝謝使用本查詢功能')
+
+
+
